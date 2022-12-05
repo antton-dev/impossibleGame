@@ -10,6 +10,12 @@
  * Thanks
  * @Antton-dev
  */
+
+ if(window.matchMedia("(pointer: coarse)").matches) {
+    document.querySelector('main').style.display = "none"
+    document.querySelector('body').innerHTML = '<p>ImpossibleGame n\' est pas (encore) jouable sur écran tactile, désolé.</p>'
+}
+
 let clickMe = document.querySelector('#clickMe')
 function move() {
     
