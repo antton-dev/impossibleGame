@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+#clickMe {
+    position: absolute;
+    transition: all .2s ease-in-out;
+    border: none;
+    padding: 10px;
+    background-color: #1c31f1;
+    color: #fff;
+    font-family: Roboto;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+body {
+    margin: 0;
+    font-family:'Roboto';
+    padding: 0;
+    background-color: #d86a3e;
+    height: 100vh;
+    
+}
+main {
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+#helpBox {
+    position: absolute;
+    display: none;
+    min-height: 100px;
+    width: 400px;
+    text-align: justify;
+    background-color: #717deea8;
+    line-height: 30px;
+    padding: 20px;
+    transition: all .3s ease;
+    left: 10px;
+    top: 10px;
+}
+
+.helpBtns {
+    cursor: pointer;
+}
+
+#help {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+#helpCloseBtn {
+    display: inline-block;
+    border: 1px solid #000;
+    line-height: 20px;
+    padding: 0 6px;
+    transition: border-color .5s ease;
+}
+
+footer {
+	text-align: center;
+}
+
+a {
+	color: #000;
+}
