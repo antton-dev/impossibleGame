@@ -11,8 +11,8 @@
  * @Antton-dev
  */
 
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 
 #clickMe {
     position: absolute;
@@ -24,6 +24,7 @@
     font-family: Roboto;
     font-size: 16px;
     text-transform: uppercase;
+    
 }
 
 body {
@@ -75,10 +76,16 @@ main {
     transition: border-color .5s ease;
 }
 
+#score {
+    margin-left: 10px;
+    position: relative;
+    top: 30px;
+}
+
 footer {
-	text-align: center;
+    text-align: center;
 }
 
 a {
-	color: #000;
+    color: #000;
 }

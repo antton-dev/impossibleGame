@@ -10,27 +10,43 @@
  * Thanks
  * @Antton-dev
  */
-
- if(window.matchMedia("(pointer: coarse)").matches) {
-    document.querySelector('main').style.display = "none"
-    document.querySelector('body').innerHTML = '<p>ImpossibleGame n\' est pas (encore) jouable sur écran tactile, désolé.</p>'
-}
-
+let score = 0
 let clickMe = document.querySelector('#clickMe')
-function move() {
+
+let xPos = clickMe.style.left
+let yPos = clickMe.style.top
+
+function move(level) {
     
-    let xPos = Math.floor(Math.random() * (window.innerWidth-50));
-    let yPos = Math.floor(Math.random() * (window.innerHeight-50));
+    // let xPos = Math.floor(Math.random() * (window.innerWidth-50));
+    // let yPos = Math.floor(Math.random() * (window.innerHeight-50));
+    let signeList = ["+", "-"]
+    let signeX = Math.floor(Math.random()*2)
+    signeX = signeList[signeX]
+    let signeY = Math.floor(Math.random()*2)
+    signeY = signeList[signeY]
+    
+
+    xPos = parseInt(xPos + Math.floor(Math.random() * level))
+    yPos = parseInt(yPos + Math.floor(Math.random() * level))
+    console.log(signeX, signeY);
     console.log(xPos, yPos)
-    clickMe.style.left = xPos + 'px'
-    clickMe.style.top = yPos + 'px'
+    clickMe.style.left = signeX + xPos + 'px'
+    clickMe.style.top = signeY + yPos + 'px'
+    score += 1
+    document.querySelector('#score').innerHTML = "Ton score : " + score
+    
     
 }
 
-clickMe.addEventListener('mouseenter', move)
+clickMe.addEventListener('mouseenter', function(){
+    move(20)}
+)
 
 function success() {
-    alert('bravo, tu as déjoué tous mes pièges !')
+    alert('bravo, tu as déjoué tous mes pièges ! \n Ton score : ' + score)
+    score = 0
+    document.querySelector('#score').innerHTML = "Ton score : 0"
 }
 
 clickMe.addEventListener('click', success)
