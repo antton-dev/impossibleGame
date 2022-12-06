@@ -10,37 +10,91 @@
  * Thanks
  * @Antton-dev
  */
+
+let level = 0
+window.addEventListener('load', function() {
+    while (level == 0 || level < 20|| level > 600) {   
+        level = prompt('Entrez le niveau de difficulté (nombre entre 20 (très facile) et 600 (extrême) : ')
+    }
+
+})
+
+
 let score = 0
 let clickMe = document.querySelector('#clickMe')
 
-let xPos = clickMe.style.left
-let yPos = clickMe.style.top
+let xPos = parseInt(Math.floor(Math.random() * (window.innerWidth-50)))
+let yPos = parseInt(Math.floor(Math.random() * (window.innerHeight-50)))
+
+clickMe.style.left = xPos
+clickMe.style.top = yPos
+
+clickMe.innerHTML = "Commencer le jeu"
 
 function move(level) {
-    
-    // let xPos = Math.floor(Math.random() * (window.innerWidth-50));
-    // let yPos = Math.floor(Math.random() * (window.innerHeight-50));
+    if (score >= 0) {
+        clickMe.innerHTML = "Try to catch me"
+        
+    }
+
     let signeList = ["+", "-"]
     let signeX = Math.floor(Math.random()*2)
     signeX = signeList[signeX]
     let signeY = Math.floor(Math.random()*2)
     signeY = signeList[signeY]
+    let randomX = Math.floor(Math.random() * level)
+    let randomY = Math.floor(Math.random() * level)
     
+    if (xPos - randomX <= 0) {
+        signeX = "+"
+    }
+    
+    if (yPos - randomY<= 0) {
+        signeY = "+"
+    }
 
-    xPos = parseInt(xPos + Math.floor(Math.random() * level))
-    yPos = parseInt(yPos + Math.floor(Math.random() * level))
+
+    if(yPos + randomY>= window.innerHeight-50) {
+        signeY = '-'
+    }
+    if(xPos + randomX >= window.innerWidth-50) {
+        signeX = '-'
+    }
+    
+    if (signeX == "+") {
+        xPos = parseInt(xPos + randomX)
+        
+    } else if(signeX == "-") {
+        xPos = parseInt(xPos - randomX)
+    } else {
+        console.log('error');
+    }
+    
+    if (signeY == "+") {
+        yPos = parseInt(yPos + randomY)
+        
+    } else if(signeY == "-") {
+        yPos = parseInt(yPos - randomY)   
+    } else {
+        console.log('error');
+    }
+
+    
     console.log(signeX, signeY);
     console.log(xPos, yPos)
-    clickMe.style.left = signeX + xPos + 'px'
-    clickMe.style.top = signeY + yPos + 'px'
+    
+
+    clickMe.style.left = xPos + 'px'
+    clickMe.style.top =  yPos + 'px'
     score += 1
+    
     document.querySelector('#score').innerHTML = "Ton score : " + score
     
     
 }
 
 clickMe.addEventListener('mouseenter', function(){
-    move(20)}
+    move(level)}
 )
 
 function success() {
